@@ -108,6 +108,7 @@ Payments are irreversible and non-custodial. There is no chargeback, no reversal
 
 **Checkout**
 - [ ] One address per order, persisted, reused on page reload
+- [ ] `reset=1` removed from every live code path — it is a development affordance, and two orders sharing an address cannot be told apart at callback time
 - [ ] Address → order mapping committed before the checkout page renders
 - [ ] Amounts stored as integers (satoshis / USDT base units)
 - [ ] Quote expiry handled with an explicit re-quote

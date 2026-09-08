@@ -38,7 +38,7 @@ Authorization: Bearer YOUR_API_KEY
 |---|---|---|
 | `match_callback` | recommended | Substring of the target store's callback URL. Selects which store this address belongs to. |
 | `crypto` | no | `BTC` (default) or `USDT`. |
-| `reset` | no | BTC only. `0` (default) generates a new address; `1` returns the last generated address again. |
+| `reset` | no | BTC only, **development use only**. `0` (default) generates a new address; `1` returns the last generated address again. |
 
 ```bash
 curl -X POST "https://www.blockonomics.co/api/new_address?match_callback=yoursite.com&crypto=BTC" \
@@ -49,11 +49,15 @@ curl -X POST "https://www.blockonomics.co/api/new_address?match_callback=yoursit
 
 An account with more than one store must send `match_callback`, or the address may be derived from the wrong store's wallet — money then arrives in a wallet the order logic is not watching. Pass a substring specific enough to be unambiguous across every store's callback URL on the account.
 
-### reset is not a retry flag
+### reset=1 is for experimenting, never for real orders
 
-`reset=1` returns the **previously generated** address instead of deriving a new one. It exists for recovering from a failed checkout render, not for retries in a loop. Calling `/new_address` repeatedly with the default `reset=0` burns a fresh address from the xPub each time, which pushes the wallet's derivation index forward and can eventually exceed the gap limit, at which point the merchant's wallet software stops detecting incoming funds.
+`reset=1` returns the **previously generated** address instead of deriving a new one. It exists so that poking at the endpoint during development does not burn a fresh address on every call.
 
-**Call it once per order, and persist the result.** If the customer reloads the checkout page, serve the stored address; do not call the endpoint again.
+**Never use it on a production checkout path.** Two live orders created with `reset=1` receive the *same* address, so when a payment arrives the callback cannot say which order it belongs to. One customer's payment then satisfies another customer's order, and the reconciliation is manual.
+
+Production code calls `/new_address` with the default `reset=0`, exactly once per order, and persists the result. If the customer reloads the checkout page, serve the stored address — do not call the endpoint again.
+
+The reason to care about extra calls is the gap limit, not the API cost: every `reset=0` call advances the xPub derivation index whether or not that address is ever paid. A long run of unpaid addresses can exceed the wallet's gap limit, at which point the merchant's own wallet software stops detecting incoming funds. The fix is one address per order, not `reset=1`.
 
 ### USDT returns a static address
 
@@ -219,6 +223,7 @@ async function createCryptoCheckout(orderId, fiatTotal, currency = "USD", crypto
 
 - [ ] `match_callback` passed on every `/new_address` call
 - [ ] One address per order, persisted, never regenerated on reload
+- [ ] `reset=1` absent from every production code path
 - [ ] Quote stored with the order, not recomputed per render
 - [ ] Amounts held as integers (satoshis / USDT base units)
 - [ ] USDT: `/monitor_tx` called server-side with the `txhash`

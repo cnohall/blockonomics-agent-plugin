@@ -180,7 +180,7 @@ A platform onboarding third-party merchants under a single Blockonomics account 
 |---|---|
 | `/new_address` errors or returns nothing | No wallet attached to the matched store |
 | Address derives from the wrong wallet | `match_callback` ambiguous across stores |
-| Same address returned every time (BTC) | Wallet registered with a plain address instead of an xPub |
+| Same address returned every time (BTC) | Wallet registered with a plain address instead of an xPub, or `reset=1` left on a live code path |
 | Same address every time (USDT) | Expected — USDT uses one static address |
 | Funds arrive but merchant wallet shows nothing | Derivation ran past the gap limit; rescan and stop burning addresses |
 | 401 on every call | Key absent, or sent as something other than `Authorization: Bearer …` |
