@@ -27,6 +27,7 @@ const PLUGIN_KEYS = new Set([
     "$schema", "name", "version", "description", "author",
     "homepage", "repository", "license", "keywords", "extensions",
 ]);
+const MCP_KEYS = new Set(["$schema", "mcpServers"]);
 const AUTHOR_KEYS = new Set(["name", "email", "url"]);
 const SERVER_KEYS = {
     stdio: new Set(["type", "command", "args", "env", "cwd"]),
@@ -74,6 +75,13 @@ const servers = mcp.mcpServers ?? {};
 
 check("mcp.json declares the v1.0.0 schema", mcp.$schema === MCP_SCHEMA, mcp.$schema);
 check("mcp.json has an mcpServers object", typeof servers === "object" && servers !== null);
+
+// The MCP root is closed to exactly $schema and mcpServers - narrower than plugin.json,
+// and narrow enough that the `//` comment convention used elsewhere in this repo is
+// invalid here. Staged-but-unshipped servers therefore live in mcp.staged.json, which
+// the spec does not govern and the build does not read.
+const strayMcpKeys = Object.keys(mcp).filter((k) => !MCP_KEYS.has(k));
+check("mcp.json carries no keys outside the closed schema", strayMcpKeys.length === 0, strayMcpKeys.join(", "));
 
 for (const [serverName, server] of Object.entries(servers)) {
     const allowed = SERVER_KEYS[server.type];

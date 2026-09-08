@@ -2,7 +2,9 @@
 
 Agent skills for integrating [Blockonomics](https://www.blockonomics.co) — non-custodial Bitcoin and USDT payments — into any application, packaged for AI coding agents.
 
-Built to the [Agent Plugins v1.0.0](https://agent-plugins.org/specification) spec, so one repository installs across Claude Code, Codex CLI, Cursor, OpenCode, VS Code / Copilot, and Kiro.
+Built to the [Agent Plugins v1.0.0](https://agent-plugins.org/specification) spec, so one repository installs across Claude Code, Codex CLI, Cursor, VS Code / Copilot, and Kiro.
+
+OpenCode is not supported yet: it loads plugins from an npm package rather than a repository, so it needs `@blockonomics/agent-plugin` published to npm. Gemini CLI has no agent-skill primitive at all, so it can only ever consume the MCP servers, not these skills.
 
 ## Why
 
@@ -63,9 +65,13 @@ Start at `blockonomics-best-practices`; the others link back to it for setup con
 
 None ship in v0.1.0. This release is skills only.
 
-Two servers are staged under `//staged` in [`mcp.json`](mcp.json) — a documentation search server and a live API server. They are deliberately not in `mcpServers` yet: a manifest entry pointing at a server that is not live surfaces to every user as a connection failure on every session.
+Two are staged in [`mcp.staged.json`](mcp.staged.json) — a documentation search server and a live API server. They are deliberately not declared yet: a manifest entry pointing at a server that is not serving surfaces to every user as a connection failure on every session.
 
-To release one, move its entry into `mcpServers` and run `npm run build`. The generator emits the client manifests, the `mcp-remote` stdio bridge in `.mcp.json`, and `gemini-extension.json` from that one edit.
+They sit in a separate file because `mcp.schema.json` closes the root object to exactly `$schema` and `mcpServers`, so there is nowhere inside `mcp.json` to park an undeclared entry — not even under a `//` comment key. `mcp.staged.json` is not part of the spec and is not read by the build.
+
+To release one, move its entry into `mcpServers` in `mcp.json`, drop it from `mcp.staged.json`, and run `npm run build`. The generator emits the `mcp-remote` stdio bridge in `.mcp.json`, `gemini-extension.json`, and the `mcpServers` pointers in the Cursor and Codex manifests from that one edit. Reversing it deletes them again.
+
+Nothing needs to be registered anywhere for a server to work: installing the plugin is what wires it up. Public MCP directories are discovery, and separate.
 
 ## Repository layout
 
@@ -73,7 +79,8 @@ Hand-authored:
 
 ```
 plugin.json          Agent Plugins v1 manifest, and the version source of truth
-mcp.json             MCP server config (empty in v0.1.0)
+mcp.json             MCP server config (empty in v0.1.0) - closed schema, no extra keys
+mcp.staged.json      servers built but not yet live; not spec-governed, not read by the build
 overlays/*.json      per-client extras the closed spec schema cannot hold
 skills/              the payload
 skills.json          explicit expected skill list, asserted by conformance

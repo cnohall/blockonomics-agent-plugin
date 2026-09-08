@@ -1,0 +1,15 @@
+{
+    "//": "Servers that are built but not yet live. NOT read by scripts/build.mjs and NOT part of the Agent Plugins spec - this file exists because mcp.schema.json closes the root object to $schema and mcpServers, so staged entries cannot be parked inside mcp.json itself.",
+    "//why": "A manifest entry pointing at a server that is not serving surfaces in every client as a per-session connection failure, so a server is declared only once its URL answers.",
+    "//promote": "Move an entry into mcpServers in mcp.json, delete it here, run `npm run build`. That emits .mcp.json (the mcp-remote stdio bridge), gemini-extension.json, and the mcpServers pointers in the Cursor and Codex manifests. Reversing the edit deletes them again.",
+    "staged": {
+        "blockonomics-docs": {
+            "type": "streamable-http",
+            "url": "https://developers.blockonomics.co/mcp"
+        },
+        "blockonomics-api": {
+            "type": "streamable-http",
+            "url": "https://mcp.blockonomics.co/mcp"
+        }
+    }
+}

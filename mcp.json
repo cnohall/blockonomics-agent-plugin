@@ -1,15 +1,4 @@
 {
     "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
-    "//": "mcpServers is intentionally empty at v0.1.0: the plugin ships skills only, and a manifest entry pointing at a server that is not yet live surfaces in the user's client as a connection failure. The servers below are staged, not shipped. To release one, move its entry into mcpServers and run `npm run build` - the client manifests, the mcp-remote stdio bridge in .mcp.json, and gemini-extension.json are all generated from this file.",
-    "mcpServers": {},
-    "//staged": {
-        "blockonomics-docs": {
-            "type": "streamable-http",
-            "url": "https://developers.blockonomics.co/mcp"
-        },
-        "blockonomics-api": {
-            "type": "streamable-http",
-            "url": "https://mcp.blockonomics.co/mcp"
-        }
-    }
+    "mcpServers": {}
 }
