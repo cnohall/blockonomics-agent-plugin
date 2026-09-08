@@ -133,9 +133,14 @@ app.get("/api/payment-callback", async (req, res) => {
 function timingSafeEqualStr(a, b) {
   const x = Buffer.from(String(a));
   const y = Buffer.from(String(b));
+  // The length check is mandatory, not an optimisation: crypto.timingSafeEqual
+  // THROWS RangeError on unequal lengths. Calling it directly on a caller-supplied
+  // secret turns a wrong-length secret into an uncaught 500 instead of a 403.
   return x.length === y.length && require("node:crypto").timingSafeEqual(x, y);
 }
 ```
+
+Do not inline `crypto.timingSafeEqual(Buffer.from(secret), Buffer.from(expected))` at the call site. It reads as equivalent and is not — an attacker probing with a short secret crashes the handler.
 
 ### Why respond before doing the work
 
