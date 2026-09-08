@@ -14,19 +14,21 @@ These skills put the real API surface and the real failure modes into the agent'
 
 ## Install
 
-> **Upstream note.** This repository currently lives at `cnohall/blockonomics-agent-plugin`. Once Blockonomics forks it, the canonical owner becomes `blockonomics/` and the install paths below change with it — a marketplace or clone command is bound to the repo path, not to the plugin name. The plugin name itself (`blockonomics`) is stable, so `claude plugins install blockonomics@blockonomics` is unaffected. Update the `repository` field in `plugin.json` and `package.json` at the same time and re-run `npm run build`; every generated manifest carries that URL.
+> **The commands below assume `github.com/blockonomics/blockonomics-agent-plugin`, which is where this plugin is meant to be served from.** Until that repository exists, they will not resolve — a marketplace or clone command is bound to the repo path. Development happens on a fork; only the canonical URL is documented, so nobody installs from a personal namespace by accident.
+>
+> If the canonical owner ever changes, edit `repository` in `plugin.json` and `package.json` and re-run `npm run build` — every generated manifest carries that URL. The plugin *name* (`blockonomics`) is independent of the path, so `claude plugins install blockonomics@blockonomics` is unaffected either way.
 
 ### Claude Code
 
 ```bash
-claude plugins marketplace add cnohall/blockonomics-agent-plugin
+claude plugins marketplace add blockonomics/blockonomics-agent-plugin
 claude plugins install blockonomics@blockonomics
 ```
 
 ### Codex CLI
 
 ```bash
-codex plugin marketplace add cnohall/blockonomics-agent-plugin
+codex plugin marketplace add blockonomics/blockonomics-agent-plugin
 # then use /plugins in the TUI; refresh with:
 codex plugin marketplace upgrade blockonomics
 ```
@@ -34,14 +36,14 @@ codex plugin marketplace upgrade blockonomics
 ### Cursor
 
 ```bash
-git clone https://github.com/cnohall/blockonomics-agent-plugin.git \
+git clone https://github.com/blockonomics/blockonomics-agent-plugin.git \
   ~/.cursor/plugins/local/blockonomics-agent-plugin
 ```
 
 ### VS Code / GitHub Copilot, Kiro
 
 ```bash
-git clone https://github.com/cnohall/blockonomics-agent-plugin.git
+git clone https://github.com/blockonomics/blockonomics-agent-plugin.git
 ```
 
 Register the clone in Chat → Plugins (VS Code) or the Powers panel (Kiro).

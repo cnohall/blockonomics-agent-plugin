@@ -27,10 +27,10 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/cnohall/blockonomics-agent-plugin.git"
+        "url": "git+https://github.com/blockonomics/blockonomics-agent-plugin.git"
     },
     "homepage": "https://developers.blockonomics.co",
-    "bugs": "https://github.com/cnohall/blockonomics-agent-plugin/issues",
+    "bugs": "https://github.com/blockonomics/blockonomics-agent-plugin/issues",
     "publishConfig": {
         "access": "public",
         "provenance": true

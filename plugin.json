@@ -8,7 +8,7 @@
         "email": "support@blockonomics.co"
     },
     "homepage": "https://developers.blockonomics.co",
-    "repository": "https://github.com/cnohall/blockonomics-agent-plugin",
+    "repository": "https://github.com/blockonomics/blockonomics-agent-plugin",
     "license": "MIT",
     "keywords": [
         "blockonomics",
