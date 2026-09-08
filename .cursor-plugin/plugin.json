@@ -1,0 +1,22 @@
+{
+    "name": "blockonomics",
+    "version": "0.1.0",
+    "description": "Blockonomics tools for Cursor: Bitcoin and USDT integration skills.",
+    "author": {
+        "name": "Blockonomics",
+        "email": "support@blockonomics.co"
+    },
+    "homepage": "https://developers.blockonomics.co",
+    "repository": "https://github.com/blockonomics/blockonomics-agent-plugin",
+    "license": "MIT",
+    "keywords": [
+        "blockonomics",
+        "bitcoin",
+        "payments",
+        "crypto",
+        "usdt",
+        "cursor",
+        "skills"
+    ],
+    "skills": "skills/"
+}

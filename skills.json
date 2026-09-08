@@ -1,0 +1,13 @@
+{
+    "//": "Explicit expected skill set. scripts/conformance.mjs asserts skills/ matches this exactly, so an addition or removal surfaces as a reviewable diff here instead of a silently changed count. The Agent Plugins spec fails silently on a malformed skills/ directory, so this list is the only thing standing between a bad merge and a plugin that installs cleanly with no skills at all.",
+    "skills": [
+        "blockonomics-best-practices",
+        "receiving-payments",
+        "callback-handling",
+        "payment-monitoring",
+        "wallet-and-store-setup",
+        "web3-usdt-component",
+        "testing-and-go-live",
+        "blockchain-search"
+    ]
+}

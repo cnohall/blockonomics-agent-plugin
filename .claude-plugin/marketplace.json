@@ -1,0 +1,34 @@
+{
+    "name": "blockonomics",
+    "owner": {
+        "name": "Blockonomics",
+        "email": "support@blockonomics.co"
+    },
+    "metadata": {
+        "description": "Blockonomics plugin marketplace for Claude Code.",
+        "version": "0.1.0"
+    },
+    "plugins": [
+        {
+            "name": "blockonomics",
+            "source": "./",
+            "description": "Blockonomics tools for Claude Code: agent skills for accepting Bitcoin and USDT payments.",
+            "author": {
+                "name": "Blockonomics",
+                "email": "support@blockonomics.co"
+            },
+            "homepage": "https://developers.blockonomics.co",
+            "repository": "https://github.com/blockonomics/blockonomics-agent-plugin",
+            "license": "MIT",
+            "keywords": [
+                "blockonomics",
+                "bitcoin",
+                "payments",
+                "crypto",
+                "usdt",
+                "claude-code",
+                "skills"
+            ]
+        }
+    ]
+}

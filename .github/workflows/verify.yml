@@ -1,0 +1,19 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # build --check fails if any generated manifest or the Codex bundle has drifted
+      # from the canonical source; conformance fails if the skill payload is malformed
+      # in a way the Agent Plugins spec would otherwise swallow silently.
+      - run: npm run verify

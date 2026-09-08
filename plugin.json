@@ -1,0 +1,44 @@
+{
+    "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "name": "blockonomics",
+    "version": "0.1.0",
+    "description": "Blockonomics tools for AI coding agents: agent skills for accepting Bitcoin and USDT payments, plus the Blockonomics docs and API MCP servers.",
+    "author": {
+        "name": "Blockonomics",
+        "email": "support@blockonomics.co"
+    },
+    "homepage": "https://developers.blockonomics.co",
+    "repository": "https://github.com/blockonomics/blockonomics-agent-plugin",
+    "license": "MIT",
+    "keywords": [
+        "blockonomics",
+        "bitcoin",
+        "payments",
+        "crypto",
+        "usdt",
+        "mcp",
+        "skills"
+    ],
+    "extensions": {
+        "com.openai": {
+            "interface": {
+                "composerIcon": "./assets/icon.svg",
+                "displayName": "Blockonomics",
+                "shortDescription": "Non-custodial Bitcoin and USDT payments - integrated into Codex.",
+                "longDescription": "Official Blockonomics plugin. Bundles eight integration skills (setup and architecture, receiving payments, callback handling, payment monitoring, wallet and store management, the Web3 USDT component, test mode, and blockchain search) covering the full merchant integration path from address generation to confirmed callback.",
+                "developerName": "Blockonomics",
+                "category": "Developer Tools",
+                "defaultPrompt": [
+                    "Add Bitcoin checkout to my Next.js store using Blockonomics.",
+                    "Write a Blockonomics callback handler with secret verification and idempotency.",
+                    "Set up a Blockonomics wallet and store, then generate a payment address."
+                ]
+            }
+        },
+        "dev.kiro": {
+            "displayName": "Blockonomics",
+            "category": "Developer Tools",
+            "description": "Eight Blockonomics integration skills for Bitcoin and USDT payments."
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "//": "Claude Code extras merged over the canonical plugin.json by scripts/build.mjs. Agent Plugins v1 has no portable secrets mechanism, so userConfig lives here and is emitted only into .claude-plugin/plugin.json. Every field is optional and unused until the API MCP server ships.",
+    "userConfig": {
+        "blockonomics_api_key": {
+            "type": "string",
+            "title": "Blockonomics API Key",
+            "description": "Optional. Unused by the skills. Reserved for the API MCP server. Obtain from Dashboard > Stores.",
+            "sensitive": true
+        }
+    }
+}

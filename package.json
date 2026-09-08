@@ -1,0 +1,38 @@
+{
+    "name": "@blockonomics/agent-plugin",
+    "version": "0.1.0",
+    "description": "Blockonomics agent skills and MCP server config for AI coding agents.",
+    "type": "module",
+    "files": [
+        "skills/",
+        "mcp.json",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "node scripts/build.mjs",
+        "build:check": "node scripts/build.mjs --check",
+        "conformance": "node scripts/conformance.mjs",
+        "verify": "node scripts/build.mjs --check && node scripts/conformance.mjs"
+    },
+    "keywords": [
+        "blockonomics",
+        "bitcoin",
+        "payments",
+        "crypto",
+        "usdt",
+        "mcp",
+        "skills"
+    ],
+    "author": "Blockonomics <support@blockonomics.co>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/blockonomics/blockonomics-agent-plugin.git"
+    },
+    "homepage": "https://developers.blockonomics.co",
+    "bugs": "https://github.com/blockonomics/blockonomics-agent-plugin/issues",
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    }
+}

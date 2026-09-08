@@ -1,0 +1,29 @@
+{
+    "name": "blockonomics",
+    "version": "0.1.0",
+    "description": "Blockonomics tools for Claude Code: agent skills for accepting Bitcoin and USDT payments.",
+    "author": {
+        "name": "Blockonomics",
+        "email": "support@blockonomics.co"
+    },
+    "homepage": "https://developers.blockonomics.co",
+    "repository": "https://github.com/blockonomics/blockonomics-agent-plugin",
+    "license": "MIT",
+    "keywords": [
+        "blockonomics",
+        "bitcoin",
+        "payments",
+        "crypto",
+        "usdt",
+        "claude-code",
+        "skills"
+    ],
+    "userConfig": {
+        "blockonomics_api_key": {
+            "type": "string",
+            "title": "Blockonomics API Key",
+            "description": "Optional. Unused by the skills. Reserved for the API MCP server. Obtain from Dashboard > Stores.",
+            "sensitive": true
+        }
+    }
+}

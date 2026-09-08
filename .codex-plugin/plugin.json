@@ -1,0 +1,35 @@
+{
+    "name": "blockonomics",
+    "version": "0.1.0",
+    "description": "Blockonomics tools for Codex: Bitcoin and USDT integration skills.",
+    "author": {
+        "name": "Blockonomics",
+        "email": "support@blockonomics.co"
+    },
+    "homepage": "https://developers.blockonomics.co",
+    "repository": "https://github.com/blockonomics/blockonomics-agent-plugin",
+    "license": "MIT",
+    "keywords": [
+        "blockonomics",
+        "bitcoin",
+        "payments",
+        "crypto",
+        "usdt",
+        "codex",
+        "skills"
+    ],
+    "skills": "./skills/",
+    "interface": {
+        "composerIcon": "./assets/icon.svg",
+        "displayName": "Blockonomics",
+        "shortDescription": "Non-custodial Bitcoin and USDT payments - integrated into Codex.",
+        "longDescription": "Official Blockonomics plugin. Bundles eight integration skills (setup and architecture, receiving payments, callback handling, payment monitoring, wallet and store management, the Web3 USDT component, test mode, and blockchain search) covering the full merchant integration path from address generation to confirmed callback.",
+        "developerName": "Blockonomics",
+        "category": "Developer Tools",
+        "defaultPrompt": [
+            "Add Bitcoin checkout to my Next.js store using Blockonomics.",
+            "Write a Blockonomics callback handler with secret verification and idempotency.",
+            "Set up a Blockonomics wallet and store, then generate a payment address."
+        ]
+    }
+}

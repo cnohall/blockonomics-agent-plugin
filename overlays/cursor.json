@@ -1,0 +1,4 @@
+{
+    "//": "Cursor extras merged over the canonical plugin.json by scripts/build.mjs. Cursor's native loader reads .cursor-plugin/plugin.json and expects component paths WITHOUT a leading './' (unlike Codex).",
+    "skills": "skills/"
+}
