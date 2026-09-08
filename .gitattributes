@@ -1,0 +1,6 @@
+# The build generates every manifest with LF and `build --check` compares bytes, so
+# a CRLF checkout makes `npm run verify` report drift on every generated file in a
+# fresh Windows clone. Pin the whole tree to LF rather than relying on each
+# contributor's core.autocrlf setting.
+* text=auto eol=lf
+*.svg text eol=lf
